@@ -1,0 +1,26 @@
+{
+  "name": "dtrace-json",
+  "version": "0.0.1",
+  "description": "Transforms dtrace output into sorted JSON",
+  "main": "cafftrace.iced.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doublerebel/dtrace-json"
+  },
+  "keywords": [
+    "dtrace",
+    "json",
+    "objc",
+    "obj-c",
+    "objective",
+    "c"
+  ],
+  "author": "charles@doublerebel.com",
+  "license": "MIT",
+  "dependencies": {
+    "iced-coffee-script": ">1.3.9"
+  }
+}

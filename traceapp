@@ -1,0 +1,4 @@
+#!/bin/bash
+
+PID="$(psgrep -id $1)"
+dtrace -C -s manual_call_tree_json.d -p $PID
