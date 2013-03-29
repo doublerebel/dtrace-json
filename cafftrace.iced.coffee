@@ -24,7 +24,8 @@ await fs.readFile file, defer err, data
 if err
 	error "reading file -- #{err}"
 
-wellformed = data.toString().trim().replace /\n/g, ""
+wellformed = data.toString().trim().replace /,\s*,([^{]|\n)+/g, ","
+wellformed = wellformed.replace /\n/g, ""
 if wellformed[wellformed.length - 1] is ","
 	wellformed = wellformed.substr 0, wellformed.length - 1
 wellformed = "[#{wellformed}]"
@@ -59,8 +60,9 @@ for f in sorted
 	
 	callstring += green "#{indent}#{f.probemod} #{f.probefunc}" + white()
 	if f.direction is 'entry'
-		shortstack = (s for s in f.stack when not stackcut.exec s)
-		callstring += white "\n#{indent}" + shortstack.join "\n#{indent}"
+		if f.stack
+			shortstack = (s for s in f.stack when not stackcut.exec s)
+			callstring += white "\n#{indent}" + shortstack.join "\n#{indent}"
 	else callstring += " RETURN\n" + white()
 	log callstring
 
